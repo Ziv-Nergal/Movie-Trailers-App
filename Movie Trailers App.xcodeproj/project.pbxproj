@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,6 +14,9 @@
 		0E6C7ADF26936E19008FC52B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E6C7ADE26936E19008FC52B /* Assets.xcassets */; };
 		0E6C7AE226936E19008FC52B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E6C7AE026936E19008FC52B /* LaunchScreen.storyboard */; };
 		0E6C7AEB26937F59008FC52B /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6C7AEA26937F59008FC52B /* Endpoint.swift */; };
+		0E7620322693809100E5B689 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7620312693809100E5B689 /* APIError.swift */; };
+		0E762034269380AD00E5B689 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E762033269380AD00E5B689 /* API.swift */; };
+		0E7620362693822800E5B689 /* MoviesEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7620352693822800E5B689 /* MoviesEndpoint.swift */; };
 		61A6BC93AC91612C115C6EF8 /* Pods_Movie_Trailers_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD22B2AACEA64FAB1F739160 /* Pods_Movie_Trailers_App.framework */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +30,9 @@
 		0E6C7AE126936E19008FC52B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0E6C7AE326936E19008FC52B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0E6C7AEA26937F59008FC52B /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		0E7620312693809100E5B689 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		0E762033269380AD00E5B689 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		0E7620352693822800E5B689 /* MoviesEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesEndpoint.swift; sourceTree = "<group>"; };
 		193CBDF9AC99EEB940C9B96D /* Pods-Movie Trailers App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movie Trailers App.debug.xcconfig"; path = "Target Support Files/Pods-Movie Trailers App/Pods-Movie Trailers App.debug.xcconfig"; sourceTree = "<group>"; };
 		9B303D491C442AA02902426A /* Pods-Movie Trailers App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movie Trailers App.release.xcconfig"; path = "Target Support Files/Pods-Movie Trailers App/Pods-Movie Trailers App.release.xcconfig"; sourceTree = "<group>"; };
 		BD22B2AACEA64FAB1F739160 /* Pods_Movie_Trailers_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Movie_Trailers_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,6 +87,9 @@
 			isa = PBXGroup;
 			children = (
 				0E6C7AEA26937F59008FC52B /* Endpoint.swift */,
+				0E7620312693809100E5B689 /* APIError.swift */,
+				0E762033269380AD00E5B689 /* API.swift */,
+				0E7620352693822800E5B689 /* MoviesEndpoint.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -91,7 +100,6 @@
 				193CBDF9AC99EEB940C9B96D /* Pods-Movie Trailers App.debug.xcconfig */,
 				9B303D491C442AA02902426A /* Pods-Movie Trailers App.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -217,9 +225,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E7620362693822800E5B689 /* MoviesEndpoint.swift in Sources */,
 				0E6C7ADA26936E18008FC52B /* ViewController.swift in Sources */,
 				0E6C7AD626936E18008FC52B /* AppDelegate.swift in Sources */,
 				0E6C7AEB26937F59008FC52B /* Endpoint.swift in Sources */,
+				0E7620322693809100E5B689 /* APIError.swift in Sources */,
+				0E762034269380AD00E5B689 /* API.swift in Sources */,
 				0E6C7AD826936E18008FC52B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
