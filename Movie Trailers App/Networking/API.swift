@@ -10,8 +10,6 @@ import Alamofire
 
 protocol API {
     
-    var endPoint: Endpoint { get }
-    
     func execute<T>(
         _ request: URLRequest,
         decodingType: T.Type,

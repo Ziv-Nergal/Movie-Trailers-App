@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Tab Bar Controller-->
+        <!--Main Tab Bar View Controller-->
         <scene sceneID="kxE-Ge-gLo">
             <objects>
-                <tabBarController id="yqG-lt-iU3" sceneMemberID="viewController">
+                <tabBarController id="yqG-lt-iU3" customClass="MainTabBarViewController" customModule="Movie_Trailers_App" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="U5z-zp-GFw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -54,10 +54,10 @@
             </objects>
             <point key="canvasLocation" x="619" y="516"/>
         </scene>
-        <!--Latest Movies Table View Controller-->
+        <!--Movies Table View Controller-->
         <scene sceneID="ZwB-sS-FDS">
             <objects>
-                <tableViewController title="Latest Movies Table View Controller" id="fPg-25-nGb" sceneMemberID="viewController">
+                <tableViewController title="Movies Table View Controller" id="fPg-25-nGb" customClass="MoviesTableViewController" customModule="Movie_Trailers_App" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="DUN-Z0-yYG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -77,7 +77,7 @@
                             <outlet property="delegate" destination="fPg-25-nGb" id="PBJ-D8-uMB"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Latest Movies" image="video.fill" catalog="system" id="hLo-BI-fBk"/>
+                    <tabBarItem key="tabBarItem" title="Movies" image="video.fill" catalog="system" id="hLo-BI-fBk"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qn5-Pv-HFf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
