@@ -10,7 +10,7 @@ import SDWebImage
 
 extension UIImageView {
     
-    func loadImage(with url: String?, showLoader: Bool = false, completion: (()->())? = nil) {
+    func loadImage(withUrl url: String?, showLoader: Bool = false, completion: (()->())? = nil) {
         
         guard let url = URL(string: url ?? "") else { return }
         

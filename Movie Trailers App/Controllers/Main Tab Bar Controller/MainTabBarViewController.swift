@@ -8,11 +8,8 @@
 import UIKit
 
 class MainTabBarViewController: UITabBarController {
-    
-    private let viewModel = MoviesViewModel()
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.fetchMovies(filteredBy: .NowPlaying)
     }
 }

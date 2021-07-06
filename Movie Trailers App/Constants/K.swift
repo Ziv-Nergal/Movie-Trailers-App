@@ -14,7 +14,7 @@ public enum K {
     }
     
     enum DateFormats: String {
-        case yyyyMMddHHmmss = "yyyy-MM-dd'T'HH:mm:ssZ"
-        case ddMMyyyy = "dd.MM.yyyy"
+        case yyyyMMdd = "yyyy-MM-dd"
+        case yyyy = "yyyy"
     }
 }
