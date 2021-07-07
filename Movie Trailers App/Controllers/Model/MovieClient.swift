@@ -9,7 +9,10 @@ import Foundation
 
 final class MovieClient: API {
     
-    func getMovies(filteredBy filter: MovieFilter, completion: @escaping (MovieFeedResult?, APIError?) -> ()) {
-        execute(filter.request, decodingType: MovieFeedResult.self, completion: completion)
+    static let moviePostersBasePath: String = "https://image.tmdb.org/t/p/w500//"
+    
+    func getMovies(movieFilter filter: MovieFilter, pageIndex index: Int, completion: @escaping (MovieFeedResult?, APIError?) -> ()) {
+        let movieRequest = MoviesRequest(filter, index)
+        execute(movieRequest.request, decodingType: MovieFeedResult.self, completion: completion)
     }
 }

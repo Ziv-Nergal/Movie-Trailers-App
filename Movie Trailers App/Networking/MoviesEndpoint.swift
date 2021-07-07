@@ -8,7 +8,9 @@
 import Foundation
 import Alamofire
 
-protocol MoviesEndpoint: Endpoint {}
+protocol MoviesEndpoint: Endpoint {
+    var pageIndex: Int { get }
+}
 
 extension MoviesEndpoint {
     
@@ -28,7 +30,7 @@ extension MoviesEndpoint {
         
         var components = URLComponents(string: base)!
         components.path = path
-        components.query = apiKey
+        components.query = "\(apiKey)&page=\(pageIndex)"
         
         return components
     }

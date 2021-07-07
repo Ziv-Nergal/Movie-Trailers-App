@@ -46,5 +46,9 @@ extension UITableView {
             layoutIfNeeded()
         }
     }
+    
+    public func isReachedEnd(withOffset offset: CGFloat = 0) -> Bool {
+        contentOffset.y > contentSize.height - frame.size.height - offset
+    }
 }
 

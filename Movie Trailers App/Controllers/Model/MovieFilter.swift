@@ -8,20 +8,25 @@
 import Foundation
 import Alamofire
 
-enum MovieFilter {
-    case Upcoming
-    case TopRated
-    case NowPlaying
+
+enum MovieFilter: String {
+    case Upcoming = "Upcoming"
+    case TopRated = "Top Rated"
+    case NowPlaying = "Now Playing"
 }
 
-extension MovieFilter: MoviesEndpoint {
+struct MoviesRequest: MoviesEndpoint {
     
-    var type: HTTPMethod {
-        .get
+    let filter: MovieFilter
+    let pageIndex: Int
+    
+    init(_ filter: MovieFilter, _ index: Int) {
+        self.filter = filter
+        self.pageIndex = index
     }
     
     var path: String {
-        switch self {
+        switch self.filter {
         case .Upcoming: return "/3/movie/upcoming"
         case .TopRated: return "/3/movie/top_rated"
         case .NowPlaying: return "/3/movie/now_playing"
