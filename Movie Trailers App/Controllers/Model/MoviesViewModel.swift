@@ -66,16 +66,12 @@ class MoviesViewModel: BaseViewModel {
         
         moviesClient.getMovies(movieFilter: filter, pageIndex: pageIndex) { [weak self] result, error in
             
-            //Adding delay only for show case purposes
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                
-                guard error == nil else {
-                    self?.handleErrorFetchingMovies()
-                    return
-                }
-                
-                self?.handleMoviesResult(result)
+            guard error == nil else {
+                self?.handleErrorFetchingMovies()
+                return
             }
+            
+            self?.handleMoviesResult(result)
         }
     }
     

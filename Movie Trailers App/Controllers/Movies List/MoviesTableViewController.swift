@@ -61,6 +61,10 @@ class MoviesTableViewController: UITableViewController {
         viewModel.moviesCount
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        present(MovieDetailsViewController.instantiate(), animated: true)
+    }
+    
     // MARK: - TableView Paging
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {

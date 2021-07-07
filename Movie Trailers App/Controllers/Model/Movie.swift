@@ -14,10 +14,12 @@ struct Movie: Decodable {
     var overview: String?
     var posterPath: String?
     var releaseDate: String?
+    var rating: Double?
     
     enum CodingKeys: String, CodingKey {
         case posterPath = "poster_path"
         case releaseDate = "release_date"
+        case rating = "vote_average"
         case id
         case title
         case overview
