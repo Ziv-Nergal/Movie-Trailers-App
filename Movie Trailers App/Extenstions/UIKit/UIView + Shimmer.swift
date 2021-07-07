@@ -51,7 +51,12 @@ extension UIView {
         DispatchQueue.main.async {
             view.layoutIfNeeded()
             for subView in view.subviews {
-                self.animateShimmer(view: subView, start: start)
+                
+                if subView.subviews.count > 0 && !(subView is UIImageView) {
+                    self.addLoader(subView, start: start)
+                } else {
+                    self.animateShimmer(view: subView, start: start)
+                }
             }
         }
     }
