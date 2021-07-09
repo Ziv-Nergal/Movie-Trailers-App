@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,8 +17,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
+        setupImageCachingExpiration()
         setupWindow()
         return true
+    }
+    
+    private func setupImageCachingExpiration() {
+        //Set image cache expiration limit to 1 day
+        SDImageCache.shared.config.maxDiskAge = 60 * 60 * 24
     }
     
     private func setupWindow() {

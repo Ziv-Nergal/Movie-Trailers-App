@@ -31,8 +31,10 @@ class MovieDetailsViewController: UIViewController {
     // MARK: - Initiation
     
     private func setupViews() {
-        moviePosterImage.loadImage(withUrl: viewModel.moviePosterUrl)
+        moviePosterImage.loadImage(withUrl: viewModel.moviePosterUrl, errorPlaceholder: .posterImagePlaceholder)
         moviePosterImage.heroID = viewModel.moviePosterUrl
+        movieTitleLbl.text = viewModel.movieTitle
+        movieReleaseYearLbl.text = viewModel.movieReleaseYear
         movieOverviewLbl.text = viewModel.movieOverview
         movieRatingLbl.text = viewModel.movieRating
         likeMovieBtn.isSelected = viewModel.isFavoriteMovie

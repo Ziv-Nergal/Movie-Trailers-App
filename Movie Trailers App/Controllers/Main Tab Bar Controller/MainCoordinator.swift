@@ -29,8 +29,4 @@ class MainCoordinator: Coordinator {
         vc.viewModel = MovieDetailsViewModel(movie)
         navigationController.pushViewController(vc, animated: true)
     }
-    
-    func goBack() {
-        navigationController.popViewController(animated: true)
-    }
 }

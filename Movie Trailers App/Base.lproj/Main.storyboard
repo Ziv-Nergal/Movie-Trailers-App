@@ -65,13 +65,16 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c5S-mg-fae" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="733"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hPi-73-UEx" userLabel="Movie Poster Image">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MoviePlaceholderImage" translatesAutoresizingMaskIntoConstraints="NO" id="hPi-73-UEx" userLabel="Movie Poster Image">
                                                 <rect key="frame" x="103.66666666666669" y="59" width="207" height="310.66666666666669"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="hPi-73-UEx" secondAttribute="height" multiplier="500:750" id="7pc-O1-JRy"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Spiderman" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F8r-un-mea" userLabel="Movie Title">
@@ -200,17 +203,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <segmentedControl key="tableHeaderView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="kWE-fh-RyS">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="32"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <segments>
-                                <segment title="Upcoming"/>
-                                <segment title="Top Rated"/>
-                                <segment title="Now Playing"/>
-                            </segments>
-                        </segmentedControl>
+                        <view key="tableHeaderView" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W6l-tY-sdm">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="61"/>
+                            <subviews>
+                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="dSm-6I-sEr">
+                                    <rect key="frame" x="10" y="15" width="287" height="32"/>
+                                    <segments>
+                                        <segment title="Upcoming"/>
+                                        <segment title="Top Rated"/>
+                                        <segment title="Now Playing"/>
+                                    </segments>
+                                </segmentedControl>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstItem="dSm-6I-sEr" firstAttribute="leading" secondItem="W6l-tY-sdm" secondAttribute="leading" constant="10" id="0Se-oM-z6k"/>
+                                <constraint firstAttribute="bottom" secondItem="dSm-6I-sEr" secondAttribute="bottom" constant="15" id="8WK-NM-DCJ"/>
+                                <constraint firstItem="dSm-6I-sEr" firstAttribute="top" secondItem="W6l-tY-sdm" secondAttribute="top" constant="15" id="9to-L8-M9z"/>
+                                <constraint firstAttribute="trailing" secondItem="dSm-6I-sEr" secondAttribute="trailing" constant="10" id="na4-4D-fd4"/>
+                            </constraints>
+                        </view>
                         <activityIndicatorView key="tableFooterView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" id="gRD-Zc-7Pw" userLabel="Spinner Footer">
-                            <rect key="frame" x="0.0" y="32" width="414" height="44"/>
+                            <rect key="frame" x="0.0" y="61" width="414" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </activityIndicatorView>
                         <connections>
@@ -220,7 +234,7 @@
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Movies" image="video.fill" catalog="system" id="hLo-BI-fBk"/>
                     <connections>
-                        <outlet property="movieFilterSegmentedControl" destination="kWE-fh-RyS" id="bub-fb-Pru"/>
+                        <outlet property="movieFilterSegmentedControl" destination="dSm-6I-sEr" id="tys-F1-ghq"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qn5-Pv-HFf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -229,6 +243,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="MoviePlaceholderImage" width="100" height="150"/>
         <image name="heart" catalog="system" width="128" height="109"/>
         <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>

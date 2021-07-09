@@ -27,7 +27,7 @@ class MovieTableViewCell: UITableViewCell {
     
     public func configure(with movie: Movie) {
         let posterUrl = "\(MovieClient.moviePostersBasePath)\(movie.posterPath ?? "")"
-        moviePosterImage.loadImage(withUrl: posterUrl, showLoader: true)
+        moviePosterImage.loadImage(withUrl: posterUrl, showLoader: true, errorPlaceholder: .posterImagePlaceholder)
         moviePosterImage.heroID = posterUrl
         movieTitleLbl.text = movie.title
         movieReleaseYearLbl.text = movie.releaseDate?.formatDate(originFormat: .yyyyMMdd, destinationFormat: .yyyy) ?? "Release date unknown"

@@ -10,7 +10,7 @@ import SDWebImage
 
 extension UIImageView {
     
-    func loadImage(withUrl url: String?, showLoader: Bool = false, completion: (()->())? = nil) {
+    func loadImage(withUrl url: String?, showLoader: Bool = false, errorPlaceholder: UIImage? = nil, completion: (()->())? = nil) {
         
         guard let url = URL(string: url ?? "") else { return }
         
@@ -18,7 +18,12 @@ extension UIImageView {
             self.showLoader()
         }
         
-        sd_setImage(with: url) { [weak self] _,_,_,_ in
+        sd_setImage(with: url) { [weak self] (image, error, cache, urls) in
+            
+            if error != nil, errorPlaceholder != nil {
+                self?.image = errorPlaceholder
+            }
+            
             if showLoader {
                 self?.hideLoader()
             }
