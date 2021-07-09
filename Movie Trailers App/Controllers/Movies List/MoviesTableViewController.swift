@@ -28,6 +28,7 @@ class MoviesTableViewController: UITableViewController {
         registerCells()
         registerObservers()
         viewModel.fetchMovies(filteredBy: selectedFilter)
+        title = selectedFilter.rawValue
     }
     
     // MARK: - Initiation
@@ -46,6 +47,7 @@ class MoviesTableViewController: UITableViewController {
     @objc func segmentedControlValueChanged(_ sender: UISegmentedControl) {
         viewModel.currentFilter = selectedFilter
         tableView.reloadDataWithAnimation()
+        title = selectedFilter.rawValue
     }
     
     private func registerCells() {
@@ -66,6 +68,40 @@ class MoviesTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         coordinator?.showMovieDetails(movie: viewModel.movie(forIndex: indexPath.row))
+    }
+    
+    override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let action = UIContextualAction(
+            style: .normal,
+            title: ""
+        ) { [weak self] (action, view, completionHandler) in
+            guard let self = self else { return }
+            UserDefaults.addMovieToFavorites(self.viewModel.movie(forIndex: indexPath.row))
+            completionHandler(true)
+        }
+        
+        action.backgroundColor = .systemYellow
+        action.image = .systemStarFilled
+        
+        return UISwipeActionsConfiguration(actions: [action])
+    }
+    
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let action = UIContextualAction(
+            style: .destructive,
+            title: ""
+        ) { [weak self] (action, view, completionHandler) in
+            guard let self = self else { return }
+            UserDefaults.removeMovieFromFavorites(self.viewModel.movie(forIndex: indexPath.row))
+            completionHandler(true)
+        }
+                
+        action.backgroundColor = .systemRed
+        action.image = .systemStar
+        
+        return UISwipeActionsConfiguration(actions: [action])
     }
     
     // MARK: - TableView Paging
@@ -101,6 +137,15 @@ extension MoviesTableViewController: MoviesViewModelDelegate {
     }
     
     func onMoviesFetchFailed() {
+        
         tableView.reloadDataWithAnimation()
+        
+        showAlert(title: "Something went wrong", message: "try again?") { [weak self] in
+            
+            guard let self = self else { return }
+            
+            self.viewModel.fetchMovies(filteredBy: self.selectedFilter)
+            self.tableView.reloadDataWithAnimation()
+        }
     }
 }
