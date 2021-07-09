@@ -70,12 +70,50 @@ class MoviesTableViewController: UITableViewController {
         coordinator?.showMovieDetails(movie: viewModel.movie(forIndex: indexPath.row))
     }
     
+    // MARK: - Context Menu Handling
+    
+    override func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        
+        let index = indexPath.row
+        let movie = viewModel.movie(forIndex: index)
+        let isFavorite = UserDefaults.favoriteMovies.contains(movie)
+        
+        let identifier = "\(index)" as NSString
+        
+        return UIContextMenuConfiguration(
+            identifier: identifier,
+            previewProvider: nil
+        ) { _ in
+            
+            let showDetailsAction = UIAction(
+                title: "Show movie details",
+                image: .infoCircle) { [weak self] _ in
+                self?.coordinator?.showMovieDetails(movie: movie)
+            }
+            
+            let favoriteAction = UIAction(
+                title: isFavorite ? "Remove from favorites" : "Add to favorites",
+                image: isFavorite ? .systemStar : .systemStarFilled) { _ in
+                
+                if isFavorite {
+                    UserDefaults.removeMovieFromFavorites(movie)
+                } else {
+                    UserDefaults.addMovieToFavorites(movie)
+                }
+            }
+            
+            return UIMenu(title: "", image: nil, children: [showDetailsAction, favoriteAction])
+        }
+    }
+    
+    // MARK: - Swipe Actions
+    
     override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
         let action = UIContextualAction(
             style: .normal,
             title: ""
-        ) { [weak self] (action, view, completionHandler) in
+        ) { [weak self] (_, _, completionHandler) in
             guard let self = self else { return }
             UserDefaults.addMovieToFavorites(self.viewModel.movie(forIndex: indexPath.row))
             completionHandler(true)
@@ -92,12 +130,12 @@ class MoviesTableViewController: UITableViewController {
         let action = UIContextualAction(
             style: .destructive,
             title: ""
-        ) { [weak self] (action, view, completionHandler) in
+        ) { [weak self] (_, _, completionHandler) in
             guard let self = self else { return }
             UserDefaults.removeMovieFromFavorites(self.viewModel.movie(forIndex: indexPath.row))
             completionHandler(true)
         }
-                
+        
         action.backgroundColor = .systemRed
         action.image = .systemStar
         
@@ -107,7 +145,7 @@ class MoviesTableViewController: UITableViewController {
     // MARK: - TableView Paging
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-                
+        
         guard !viewModel.isLoading else { return }
         
         if tableView.isReachedEnd(withOffset: 100) {

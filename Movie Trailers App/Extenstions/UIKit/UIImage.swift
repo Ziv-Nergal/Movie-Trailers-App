@@ -11,5 +11,6 @@ extension UIImage {
     static let posterImagePlaceholder = UIImage(named: "MoviePlaceholderImage")
     static let systemStar = UIImage(systemName: "star")
     static let systemStarFilled = UIImage(systemName: "star.fill")
+    static let infoCircle = UIImage(systemName: "info.circle")
 }
 

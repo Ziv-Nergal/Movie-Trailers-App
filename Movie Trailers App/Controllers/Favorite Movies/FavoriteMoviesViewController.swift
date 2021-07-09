@@ -24,7 +24,7 @@ class FavoriteMoviesViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        noFavoritesView.isHidden = UserDefaults.favoriteMovies.count > 0
+        showNoFavoritesViewIfNeeded()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -42,8 +42,15 @@ class FavoriteMoviesViewController: UIViewController {
     private func listenForFavoriteMoviesChanges() {
         NotificationCenter.default.addObserver(forName: .favoriteMoviesSetChanged, object: nil, queue: .main)
         { [weak self] _ in
-            self?.tableView.reloadData()
+            self?.tableView.reloadDataWithAnimation()
+            self?.showNoFavoritesViewIfNeeded()
         }
+    }
+    
+    // MARK: - Private Methods
+    
+    private func showNoFavoritesViewIfNeeded() {
+        noFavoritesView.isHidden = UserDefaults.favoriteMovies.count > 0
     }
 }
 
@@ -65,6 +72,22 @@ extension FavoriteMoviesViewController: UITableViewDataSource {
 // MARK: - TableView Delegate Methods
 
 extension FavoriteMoviesViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let action = UIContextualAction(
+            style: .destructive,
+            title: ""
+        ) { (_, _, completionHandler) in
+            UserDefaults.removeMovieFromFavorites(UserDefaults.favoriteMovies[indexPath.row])
+            completionHandler(true)
+        }
+                
+        action.backgroundColor = .systemRed
+        action.image = .systemStar
+        
+        return UISwipeActionsConfiguration(actions: [action])
+    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         coordinator?.showMovieDetails(movie: UserDefaults.favoriteMovies[indexPath.row])
