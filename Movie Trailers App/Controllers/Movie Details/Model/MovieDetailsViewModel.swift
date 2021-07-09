@@ -17,6 +17,10 @@ class MovieDetailsViewModel: BaseViewModel {
     
     // MARK: - Public Fields
     
+    public var movieId: Int {
+        movie.id
+    }
+    
     public var moviePosterUrl: String {
         "\(MovieClient.moviePostersBasePath)\(movie.posterPath ?? "")"
     }

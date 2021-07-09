@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Hero
 
 class MainCoordinator: Coordinator {
     
@@ -14,6 +15,8 @@ class MainCoordinator: Coordinator {
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
+        self.navigationController.hero.isEnabled = true
+        self.navigationController.heroNavigationAnimationType = .fade
     }
     
     func start() {

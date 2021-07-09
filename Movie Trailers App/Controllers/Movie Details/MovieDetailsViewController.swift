@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Hero
 
 class MovieDetailsViewController: UIViewController {
     
@@ -24,19 +25,19 @@ class MovieDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
     }
     
     // MARK: - Initiation
     
     private func setupViews() {
         moviePosterImage.loadImage(withUrl: viewModel.moviePosterUrl)
-        movieTitleLbl.text = viewModel.movieTitle
-        movieReleaseYearLbl.text = viewModel.movieReleaseYear
+        moviePosterImage.heroID = viewModel.moviePosterUrl
         movieOverviewLbl.text = viewModel.movieOverview
         movieRatingLbl.text = viewModel.movieRating
         likeMovieBtn.isSelected = viewModel.isFavoriteMovie
     }
-    
+        
     // MARK: - Click Events
     
     @IBAction func likeMovieBtnClick(_ sender: UIButton) {

@@ -54,7 +54,7 @@
         <!--Movie Details View Controller-->
         <scene sceneID="Rb7-57-TP1">
             <objects>
-                <viewController storyboardIdentifier="MovieDetailsViewController" title="Movie Details View Controller" id="2ai-vK-Ibc" customClass="MovieDetailsViewController" customModule="Movie_Trailers_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MovieDetailsViewController" id="2ai-vK-Ibc" customClass="MovieDetailsViewController" customModule="Movie_Trailers_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Agj-Bx-6BN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -70,12 +70,18 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="hPi-73-UEx" secondAttribute="height" multiplier="500:750" id="7pc-O1-JRy"/>
                                                 </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Spiderman" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F8r-un-mea" userLabel="Movie Title">
                                                 <rect key="frame" x="31" y="384.66666666666669" width="352" height="28.666666666666686"/>
                                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="24"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="eeb-jq-EgA">
                                                 <rect key="frame" x="155.33333333333334" y="418.33333333333331" width="103.33333333333334" height="21.666666666666686"/>

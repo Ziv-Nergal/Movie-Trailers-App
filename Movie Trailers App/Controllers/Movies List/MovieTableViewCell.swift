@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Hero
 
 class MovieTableViewCell: UITableViewCell {
 
@@ -25,8 +26,10 @@ class MovieTableViewCell: UITableViewCell {
     }
     
     public func configure(with movie: Movie) {
-        moviePosterImage.loadImage(withUrl: "\(MovieClient.moviePostersBasePath)\(movie.posterPath ?? "")", showLoader: true)
-        movieTitleLbl.text = movie.title 
+        let posterUrl = "\(MovieClient.moviePostersBasePath)\(movie.posterPath ?? "")"
+        moviePosterImage.loadImage(withUrl: posterUrl, showLoader: true)
+        moviePosterImage.heroID = posterUrl
+        movieTitleLbl.text = movie.title
         movieReleaseYearLbl.text = movie.releaseDate?.formatDate(originFormat: .yyyyMMdd, destinationFormat: .yyyy) ?? "Release date unknown"
     }
 }

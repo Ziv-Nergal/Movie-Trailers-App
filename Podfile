@@ -10,5 +10,7 @@ target 'Movie Trailers App' do
   pod 'Alamofire'
     
   pod 'SDWebImage'
+  
+  pod 'Hero'
 
 end
