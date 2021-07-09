@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Movie: Decodable {
+struct Movie: Codable, Equatable {
     
     let id: Int
     let title: String
@@ -23,5 +23,9 @@ struct Movie: Decodable {
         case id
         case title
         case overview
+    }
+    
+    static func == (lhs: Movie, rhs: Movie) -> Bool {
+        return lhs.id == rhs.id
     }
 }

@@ -12,6 +12,6 @@ class FavoriteMoviesCoordinator: MainCoordinator {
     override func start() {
         let vc = FavoriteMoviesViewController.instantiate()
         vc.coordinator = self
-        navigationController.pushViewController(vc, animated: true)
+        navigationController.pushViewController(vc, animated: false)
     }
 }

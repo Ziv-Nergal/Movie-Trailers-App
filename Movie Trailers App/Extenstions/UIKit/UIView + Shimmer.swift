@@ -48,15 +48,15 @@ extension UIView {
     }
     
     private func addLoader(_ view: UIView, start: Bool) {
-        DispatchQueue.main.async {
-            view.layoutIfNeeded()
-            for subView in view.subviews {
-                
-                if subView.subviews.count > 0 && !(subView is UIImageView) {
-                    self.addLoader(subView, start: start)
-                } else {
-                    self.animateShimmer(view: subView, start: start)
-                }
+        
+        view.layoutIfNeeded()
+        
+        for subView in view.subviews {
+            
+            if subView.subviews.count > 0 && !(subView is UIImageView) {
+                self.addLoader(subView, start: start)
+            } else {
+                self.animateShimmer(view: subView, start: start)
             }
         }
     }

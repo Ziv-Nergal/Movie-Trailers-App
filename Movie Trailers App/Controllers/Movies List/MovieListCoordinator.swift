@@ -12,6 +12,6 @@ class MovieListCoordinator: MainCoordinator {
     override func start() {
         let vc = MoviesTableViewController.instantiate()
         vc.coordinator = self
-        navigationController.pushViewController(vc, animated: true)
+        navigationController.pushViewController(vc, animated: false)
     }
 }

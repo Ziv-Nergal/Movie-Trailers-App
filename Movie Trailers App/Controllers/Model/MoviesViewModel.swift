@@ -78,16 +78,4 @@ class MoviesViewModel: BaseViewModel {
     public func movie(forIndex index: Int) -> Movie {
         movies[index]
     }
-    
-    public func moviePosterUrl(forIndex index: Int) -> String {
-        "\(MovieClient.moviePostersBasePath)\(movies[index].posterPath ?? "")"
-    }
-    
-    public func movieTitle(forIndex index: Int) -> String {
-        movies[index].title
-    }
-    
-    public func movieReleaseYear(forIndex index: Int) -> String {
-        movies[index].releaseDate?.formatDate(originFormat: .yyyyMMdd, destinationFormat: .yyyy) ?? "Release date unknown"
-    }
 }

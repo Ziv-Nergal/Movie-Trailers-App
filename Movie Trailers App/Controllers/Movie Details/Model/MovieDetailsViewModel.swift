@@ -43,7 +43,15 @@ class MovieDetailsViewModel: BaseViewModel {
     }
     
     public var isFavoriteMovie: Bool {
-        //TODO - Add Implementation
-        true
+        get {
+            UserDefaults.favoriteMovies.contains(movie)
+        }
+        set {
+            if newValue {
+                UserDefaults.addMovieToFavorites(movie)
+            } else {
+                UserDefaults.removeMovieFromFavorites(movie)
+            }
+        }
     }
 }

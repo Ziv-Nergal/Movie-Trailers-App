@@ -40,6 +40,7 @@ class MovieDetailsViewController: UIViewController {
     // MARK: - Click Events
     
     @IBAction func likeMovieBtnClick(_ sender: UIButton) {
-        //TODO - Implement
+        likeMovieBtn.isSelected = !likeMovieBtn.isSelected
+        viewModel.isFavoriteMovie = likeMovieBtn.isSelected
     }
 }

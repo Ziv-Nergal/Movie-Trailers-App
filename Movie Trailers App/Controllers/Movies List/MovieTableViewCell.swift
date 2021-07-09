@@ -21,8 +21,12 @@ class MovieTableViewCell: UITableViewCell {
         }
         
         contentView.stopSmartShimmer()
-        moviePosterImage.loadImage(withUrl: viewModel.moviePosterUrl(forIndex: indexPath.row), showLoader: true)
-        movieTitleLbl.text = viewModel.movieTitle(forIndex: indexPath.row)
-        movieReleaseYearLbl.text = viewModel.movieReleaseYear(forIndex: indexPath.row)
+        configure(with: viewModel.movie(forIndex: indexPath.row))
+    }
+    
+    public func configure(with movie: Movie) {
+        moviePosterImage.loadImage(withUrl: "\(MovieClient.moviePostersBasePath)\(movie.posterPath ?? "")", showLoader: true)
+        movieTitleLbl.text = movie.title 
+        movieReleaseYearLbl.text = movie.releaseDate?.formatDate(originFormat: .yyyyMMdd, destinationFormat: .yyyy) ?? "Release date unknown"
     }
 }
