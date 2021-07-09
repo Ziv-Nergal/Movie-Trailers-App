@@ -28,6 +28,7 @@ class FavoriteMoviesViewController: UITableViewController {
     
     private func setupViews() {
         tableView.register(cellType: MovieTableViewCell.self)
+        tableView.tableFooterView = UIView() // Eliminate extra separators below UITableView
     }
     
     private func listenForFavoriteMoviesChanges() {

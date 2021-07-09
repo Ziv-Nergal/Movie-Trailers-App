@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainTabBarViewController: UITabBarController {
+class MainTabBarViewController: CustomTabBarController {
         
     let movieCoordinator = MovieListCoordinator(navigationController: UINavigationController())
     let favoritesCoordinator = FavoriteMoviesCoordinator(navigationController: UINavigationController())
