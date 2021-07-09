@@ -73,6 +73,15 @@ extension FavoriteMoviesViewController: UITableViewDataSource {
 
 extension FavoriteMoviesViewController: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        coordinator?.showMovieDetails(movie: UserDefaults.favoriteMovies[indexPath.row])
+    }
+}
+
+// MARK: - Swipe Actions
+
+extension FavoriteMoviesViewController {
+    
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
         let action = UIContextualAction(
@@ -88,8 +97,37 @@ extension FavoriteMoviesViewController: UITableViewDelegate {
         
         return UISwipeActionsConfiguration(actions: [action])
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        coordinator?.showMovieDetails(movie: UserDefaults.favoriteMovies[indexPath.row])
+}
+
+// MARK: - Context Menu Handling
+
+extension FavoriteMoviesViewController {
+        
+    func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        
+        let index = indexPath.row
+        let movie = UserDefaults.favoriteMovies[index]
+        
+        let identifier = "\(index)" as NSString
+        
+        return UIContextMenuConfiguration(
+            identifier: identifier,
+            previewProvider: nil
+        ) { _ in
+            
+            let showDetailsAction = UIAction(
+                title: "Show movie details",
+                image: .infoCircle) { [weak self] _ in
+                self?.coordinator?.showMovieDetails(movie: movie)
+            }
+            
+            let favoriteAction = UIAction(
+                title: "Remove from favorites",
+                image: .systemStar) { _ in
+                UserDefaults.removeMovieFromFavorites(movie)
+            }
+            
+            return UIMenu(title: "", image: nil, children: [showDetailsAction, favoriteAction])
+        }
     }
 }

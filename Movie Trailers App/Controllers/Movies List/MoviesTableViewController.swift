@@ -28,7 +28,7 @@ class MoviesTableViewController: UITableViewController {
         registerCells()
         registerObservers()
         viewModel.fetchMovies(filteredBy: selectedFilter)
-        title = selectedFilter.rawValue
+        changeTitleAccordingToCurrentFilter()
     }
     
     // MARK: - Initiation
@@ -44,14 +44,26 @@ class MoviesTableViewController: UITableViewController {
         movieFilterSegmentedControl.addTarget(self, action: #selector(segmentedControlValueChanged), for: .valueChanged)
     }
     
-    @objc func segmentedControlValueChanged(_ sender: UISegmentedControl) {
-        viewModel.currentFilter = selectedFilter
-        tableView.reloadDataWithAnimation()
-        title = selectedFilter.rawValue
-    }
-    
     private func registerCells() {
         tableView.register(cellType: MovieTableViewCell.self)
+    }
+    
+    // MARK: - Private Methods
+    
+    @objc private func segmentedControlValueChanged(_ sender: UISegmentedControl) {
+        viewModel.currentFilter = selectedFilter
+        tableView.reloadDataWithAnimation()
+        changeTitleAccordingToCurrentFilter()
+    }
+    
+    private func changeTitleAccordingToCurrentFilter() {
+        
+        let fadeTextAnimation = CATransition()
+        fadeTextAnimation.duration = 0.25
+        fadeTextAnimation.type = .fade
+        
+        navigationController?.navigationBar.layer.add(fadeTextAnimation, forKey: "fadeText")
+        navigationItem.title = selectedFilter.rawValue
     }
     
     // MARK: - TableView DataSource Methods
@@ -147,6 +159,8 @@ class MoviesTableViewController: UITableViewController {
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         guard !viewModel.isLoading else { return }
+        
+        changeTitleAccordingToCurrentFilter()
         
         if tableView.isReachedEnd(withOffset: 100) {
             
