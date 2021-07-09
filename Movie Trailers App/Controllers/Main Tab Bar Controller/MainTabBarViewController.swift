@@ -9,7 +9,13 @@ import UIKit
 
 class MainTabBarViewController: UITabBarController {
         
+    let movieCoordinator = MovieListCoordinator(navigationController: UINavigationController())
+    let favoritesCoordinator = FavoriteMoviesCoordinator(navigationController: UINavigationController())
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        movieCoordinator.start()
+        favoritesCoordinator.start()
+        viewControllers = [movieCoordinator.navigationController, favoritesCoordinator.navigationController]
     }
 }

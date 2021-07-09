@@ -26,10 +26,10 @@
             </objects>
             <point key="canvasLocation" x="-526" y="125"/>
         </scene>
-        <!--Favorite Movies Table View Controller-->
+        <!--Favorites-->
         <scene sceneID="0Os-Ff-0bb">
             <objects>
-                <tableViewController title="Favorite Movies Table View Controller" id="Fcv-6V-he2" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="FavoriteMoviesViewController" title="Favorites" id="Fcv-6V-he2" customClass="FavoriteMoviesViewController" customModule="Movie_Trailers_App" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="0zU-hV-wVl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -75,7 +75,7 @@
                                                     <constraint firstAttribute="width" secondItem="hPi-73-UEx" secondAttribute="height" multiplier="500:750" id="7pc-O1-JRy"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spiderman" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F8r-un-mea" userLabel="Movie Title">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Spiderman" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F8r-un-mea" userLabel="Movie Title">
                                                 <rect key="frame" x="31" y="384.66666666666669" width="352" height="28.666666666666686"/>
                                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="24"/>
                                                 <nil key="textColor"/>
@@ -113,7 +113,7 @@
                                                     <constraint firstItem="1Cp-pR-iRM" firstAttribute="top" secondItem="Bwv-ek-nfj" secondAttribute="top" id="OaN-iA-rcM"/>
                                                 </constraints>
                                             </stackView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1dC-vg-8qZ" userLabel="Movie Overview">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1dC-vg-8qZ" userLabel="Movie Overview">
                                                 <rect key="frame" x="31" y="455" width="352" height="258"/>
                                                 <string key="text">Searching for a safer habitat, the prehistoric Crood family discovers an idyllic, walled-in paradise that meets all of its needs. Unfortunately, they must also learn to live with the Bettermans -- a family that's a couple of steps above the Croods on the evolutionary ladder. As tensions between the new neighbors start to rise, a new threat soon propels both clans on an epic adventure that forces them to embrace their differences, draw strength from one another, and survive together.</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -126,10 +126,14 @@
                                                     <constraint firstAttribute="width" constant="35" id="hED-oq-TRg"/>
                                                     <constraint firstAttribute="height" constant="35" id="yKk-WV-P9x"/>
                                                 </constraints>
+                                                <color key="tintColor" systemColor="systemPinkColor"/>
                                                 <state key="normal" image="heart" catalog="system">
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="medium"/>
                                                 </state>
                                                 <state key="selected" image="heart.fill" catalog="system"/>
+                                                <connections>
+                                                    <action selector="likeMovieBtnClick:" destination="2ai-vK-Ibc" eventType="touchUpInside" id="04f-M7-d2c"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <viewLayoutGuide key="safeArea" id="q0z-5H-eQe"/>
@@ -157,9 +161,7 @@
                                     <constraint firstItem="c5S-mg-fae" firstAttribute="top" secondItem="8TW-Tq-XVL" secondAttribute="top" id="1bg-tU-VBZ"/>
                                     <constraint firstItem="8TW-Tq-XVL" firstAttribute="bottom" secondItem="c5S-mg-fae" secondAttribute="bottom" id="8hh-cw-0pK"/>
                                     <constraint firstItem="hb1-Ui-vkD" firstAttribute="width" secondItem="c5S-mg-fae" secondAttribute="width" id="AkB-68-jtd"/>
-                                    <constraint firstItem="8TW-Tq-XVL" firstAttribute="height" secondItem="c5S-mg-fae" secondAttribute="height" id="ThL-jV-1fT"/>
                                     <constraint firstItem="8TW-Tq-XVL" firstAttribute="trailing" secondItem="c5S-mg-fae" secondAttribute="trailing" id="Xcm-0L-A9a"/>
-                                    <constraint firstItem="c5S-mg-fae" firstAttribute="top" secondItem="hb1-Ui-vkD" secondAttribute="top" id="s0D-zt-pzv"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="8TW-Tq-XVL"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="hb1-Ui-vkD"/>
@@ -176,8 +178,10 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <connections>
+                        <outlet property="likeMovieBtn" destination="32c-XJ-b56" id="r6D-Lb-6sL"/>
                         <outlet property="movieOverviewLbl" destination="1dC-vg-8qZ" id="eoa-P9-sJM"/>
                         <outlet property="moviePosterImage" destination="hPi-73-UEx" id="h6f-4B-HgE"/>
+                        <outlet property="movieRatingLbl" destination="Pet-Uw-hYh" id="YRU-bZ-aqb"/>
                         <outlet property="movieReleaseYearLbl" destination="Bwv-ek-nfj" id="FL2-gZ-fwt"/>
                         <outlet property="movieTitleLbl" destination="F8r-un-mea" id="MYe-fP-fgS"/>
                     </connections>
@@ -186,10 +190,10 @@
             </objects>
             <point key="canvasLocation" x="1768" y="125"/>
         </scene>
-        <!--Movies Table View Controller-->
+        <!--Movies-->
         <scene sceneID="ZwB-sS-FDS">
             <objects>
-                <tableViewController title="Movies Table View Controller" id="fPg-25-nGb" customClass="MoviesTableViewController" customModule="Movie_Trailers_App" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="MoviesTableViewController" title="Movies" id="fPg-25-nGb" customClass="MoviesTableViewController" customModule="Movie_Trailers_App" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="170" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="DUN-Z0-yYG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -235,6 +239,9 @@
         </systemColor>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

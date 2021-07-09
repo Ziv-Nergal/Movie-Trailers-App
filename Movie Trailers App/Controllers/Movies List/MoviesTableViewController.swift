@@ -13,6 +13,8 @@ class MoviesTableViewController: UITableViewController {
     
     private let viewModel = MoviesViewModel()
     
+    weak var coordinator: MovieListCoordinator?
+    
     private var selectedFilter: MovieFilter {
         .init(
             rawValue: movieFilterSegmentedControl.titleForSegment(
@@ -62,7 +64,7 @@ class MoviesTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        present(MovieDetailsViewController.instantiate(), animated: true)
+        coordinator?.showMovieDetails(movie: viewModel.movie(forIndex: indexPath.row))
     }
     
     // MARK: - TableView Paging

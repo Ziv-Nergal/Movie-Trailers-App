@@ -13,6 +13,11 @@ class MovieDetailsViewController: UIViewController {
     @IBOutlet private weak var movieTitleLbl: UILabel!
     @IBOutlet private weak var movieReleaseYearLbl: UILabel!
     @IBOutlet private weak var movieOverviewLbl: UILabel!
+    @IBOutlet private weak var likeMovieBtn: UIButton!
+    @IBOutlet private weak var movieRatingLbl: UILabel!
+    
+    var viewModel: MovieDetailsViewModel!
+    weak var coordinator: MainCoordinator?
     
     // MARK: - Overrides
     
@@ -24,10 +29,17 @@ class MovieDetailsViewController: UIViewController {
     // MARK: - Initiation
     
     private func setupViews() {
-        //TODO: implement
+        moviePosterImage.loadImage(withUrl: viewModel.moviePosterUrl)
+        movieTitleLbl.text = viewModel.movieTitle
+        movieReleaseYearLbl.text = viewModel.movieReleaseYear
+        movieOverviewLbl.text = viewModel.movieOverview
+        movieRatingLbl.text = viewModel.movieRating
+        likeMovieBtn.isSelected = viewModel.isFavoriteMovie
     }
     
-    // MARK: - Private Methods
-    
     // MARK: - Click Events
+    
+    @IBAction func likeMovieBtnClick(_ sender: UIButton) {
+        //TODO - Implement
+    }
 }
