@@ -23,33 +23,73 @@
             <point key="canvasLocation" x="-526" y="125"/>
         </scene>
         <!--Favorites-->
-        <scene sceneID="0Os-Ff-0bb">
+        <scene sceneID="3uy-UQ-IYl">
             <objects>
-                <tableViewController storyboardIdentifier="FavoriteMoviesViewController" title="Favorites" extendedLayoutIncludesOpaqueBars="YES" id="Fcv-6V-he2" customClass="FavoriteMoviesViewController" customModule="Movie_Trailers_App" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="171" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="0zU-hV-wVl">
+                <viewController storyboardIdentifier="FavoriteMoviesViewController" title="Favorites" id="DIF-gG-c9c" customClass="FavoriteMoviesViewController" customModule="Movie_Trailers_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VX8-t4-RuE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="171" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="A0H-hE-9Kh" userLabel="FavoriteMoviesTableView">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Owp-C4-j0z">
+                                        <rect key="frame" x="0.0" y="24.333333969116211" width="414" height="171"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Owp-C4-j0z" id="aV8-qU-F4r">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="171"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="DIF-gG-c9c" id="WZS-Ji-qOK"/>
+                                    <outlet property="delegate" destination="DIF-gG-c9c" id="0Yf-JJ-Nm7"/>
+                                </connections>
+                            </tableView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="Ut2-EI-quX" userLabel="No Movies StackView">
+                                <rect key="frame" x="31" y="422" width="352" height="52.333333333333314"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="AMk-bI-Hcy">
+                                        <rect key="frame" x="163.66666666666666" y="-0.33333333333333215" width="25" height="24.666666666666664"/>
+                                        <color key="tintColor" systemColor="systemYellowColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="K4b-Zb-S13"/>
+                                            <constraint firstAttribute="width" constant="25" id="wKK-d5-dkJ"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favorite Movies Will Appear Here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BOK-xn-kID">
+                                        <rect key="frame" x="50.666666666666686" y="32" width="251" height="20.333333333333329"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="iAR-9Z-20p"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="wcY-kn-nDy">
-                                <rect key="frame" x="0.0" y="24.333333969116211" width="414" height="171"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wcY-kn-nDy" id="VQ3-1r-0YR">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="171"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="Fcv-6V-he2" id="pTm-fa-0Dq"/>
-                            <outlet property="delegate" destination="Fcv-6V-he2" id="zx2-L3-wyg"/>
-                        </connections>
-                    </tableView>
-                    <tabBarItem key="tabBarItem" title="Favorites" image="star.fill" catalog="system" id="daG-GK-46w"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2bY-Xi-Pix" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                        <constraints>
+                            <constraint firstItem="A0H-hE-9Kh" firstAttribute="leading" secondItem="iAR-9Z-20p" secondAttribute="leading" id="8qV-Mp-IRQ"/>
+                            <constraint firstAttribute="bottom" secondItem="A0H-hE-9Kh" secondAttribute="bottom" id="ZJ1-Gz-AzS"/>
+                            <constraint firstItem="A0H-hE-9Kh" firstAttribute="trailing" secondItem="iAR-9Z-20p" secondAttribute="trailing" id="cTm-Xd-ifp"/>
+                            <constraint firstItem="Ut2-EI-quX" firstAttribute="centerX" secondItem="VX8-t4-RuE" secondAttribute="centerX" id="hvR-8Z-3f9"/>
+                            <constraint firstItem="Ut2-EI-quX" firstAttribute="centerY" secondItem="VX8-t4-RuE" secondAttribute="centerY" id="lVe-JA-gIU"/>
+                            <constraint firstItem="Ut2-EI-quX" firstAttribute="width" secondItem="VX8-t4-RuE" secondAttribute="width" multiplier="0.85" id="s3i-r0-xdG"/>
+                            <constraint firstItem="A0H-hE-9Kh" firstAttribute="top" secondItem="VX8-t4-RuE" secondAttribute="top" id="tOj-nw-fJ5"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" systemItem="favorites" id="daG-GK-46w"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="noFavoritesView" destination="Ut2-EI-quX" id="63s-bc-QZZ"/>
+                        <outlet property="tableView" destination="A0H-hE-9Kh" id="YJK-OY-pr7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dE2-q1-JLT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="619" y="516"/>
+            <point key="canvasLocation" x="618.84057971014499" y="693.75"/>
         </scene>
         <!--Movie Details View Controller-->
         <scene sceneID="Rb7-57-TP1">
@@ -131,11 +171,11 @@
                                                     <constraint firstAttribute="width" constant="35" id="hED-oq-TRg"/>
                                                     <constraint firstAttribute="height" constant="35" id="yKk-WV-P9x"/>
                                                 </constraints>
-                                                <color key="tintColor" systemColor="systemPinkColor"/>
-                                                <state key="normal" image="heart" catalog="system">
+                                                <color key="tintColor" systemColor="systemYellowColor"/>
+                                                <state key="normal" image="star" catalog="system">
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="medium"/>
                                                 </state>
-                                                <state key="selected" image="heart.fill" catalog="system"/>
+                                                <state key="selected" image="star.fill" catalog="system"/>
                                                 <connections>
                                                     <action selector="likeMovieBtnClick:" destination="2ai-vK-Ibc" eventType="touchUpInside" id="04f-M7-d2c"/>
                                                 </connections>
@@ -243,8 +283,7 @@
     </scenes>
     <resources>
         <image name="MoviePlaceholderImage" width="100" height="150"/>
-        <image name="heart" catalog="system" width="128" height="109"/>
-        <image name="heart.fill" catalog="system" width="128" height="109"/>
+        <image name="star" catalog="system" width="128" height="116"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
         <image name="video.fill" catalog="system" width="128" height="82"/>
         <systemColor name="separatorColor">
@@ -255,9 +294,6 @@
         </systemColor>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemPinkColor">
-            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

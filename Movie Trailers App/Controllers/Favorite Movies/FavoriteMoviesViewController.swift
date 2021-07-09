@@ -7,7 +7,10 @@
 
 import UIKit
 
-class FavoriteMoviesViewController: UITableViewController {
+class FavoriteMoviesViewController: UIViewController {
+    
+    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var noFavoritesView: UIStackView!
     
     weak var coordinator: FavoriteMoviesCoordinator?
     
@@ -17,6 +20,11 @@ class FavoriteMoviesViewController: UITableViewController {
         super.viewDidLoad()
         setupViews()
         listenForFavoriteMoviesChanges()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        noFavoritesView.isHidden = UserDefaults.favoriteMovies.count > 0
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -37,20 +45,28 @@ class FavoriteMoviesViewController: UITableViewController {
             self?.tableView.reloadData()
         }
     }
+}
+
+// MARK: - TableView DataSource Methods
+
+extension FavoriteMoviesViewController: UITableViewDataSource {
     
-    // MARK: - TableView DataSource Methods
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(with: MovieTableViewCell.self, for: indexPath)
         cell.configure(with: UserDefaults.favoriteMovies[indexPath.row])
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         UserDefaults.favoriteMovies.count
     }
+}
+
+// MARK: - TableView Delegate Methods
+
+extension FavoriteMoviesViewController: UITableViewDelegate {
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         coordinator?.showMovieDetails(movie: UserDefaults.favoriteMovies[indexPath.row])
     }
 }
