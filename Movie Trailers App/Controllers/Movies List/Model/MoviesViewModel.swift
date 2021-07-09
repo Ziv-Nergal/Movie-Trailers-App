@@ -15,8 +15,16 @@ protocol MoviesViewModelDelegate: AnyObject {
 class MoviesViewModel: BaseViewModel {
     
     private let moviesClient = MovieClient()
-    private var movies = [Movie]()
-    private var pageIndex: Int = 1
+    
+    private var movies: [Movie] {
+        dataSource[currentFilter]?.movies ?? []
+    }
+    
+    private var pageIndex: Int {
+        dataSource[currentFilter]?.pageIndex ?? 1
+    }
+    
+    private var dataSource = [MovieFilter: MovieDataSource]()
     
     public weak var delegate: MoviesViewModelDelegate? = .none
     
@@ -25,6 +33,14 @@ class MoviesViewModel: BaseViewModel {
     let isLoadingNextBatchObservable = ObservableField<Bool>(initialValue: false)
     
     // MARK: - Public Fields
+    
+    public var currentFilter: MovieFilter = .Upcoming {
+        didSet {
+            if moviesCount == 0 {
+                fetchMovies(filteredBy: currentFilter)
+            }
+        }
+    }
     
     public var moviesCount: Int {
         guard !isLoading else { return 15 }
@@ -38,11 +54,11 @@ class MoviesViewModel: BaseViewModel {
     // MARK: - Private Methods
     
     private func handleMoviesResult(_ result: MovieFeedResult?) {
-        movies.append(contentsOf: result?.results ?? [])
+        dataSource[currentFilter]?.movies.append(contentsOf: result?.results ?? [])
         loadingStateObs.value = .Idle
-        isLoadingNextBatchObservable.value = false
         delegate?.onMoviesFetchedSuccess(isInitialBatch: pageIndex == 1)
-        pageIndex += 1
+        dataSource[currentFilter]?.pageIndex += 1
+        isLoadingNextBatchObservable.value = false
     }
     
     private func handleErrorFetchingMovies() {
@@ -64,7 +80,11 @@ class MoviesViewModel: BaseViewModel {
             isLoadingNextBatchObservable.value = true
         }
         
-        moviesClient.getMovies(movieFilter: filter, pageIndex: pageIndex) { [weak self] result, error in
+        if dataSource[filter] == nil {
+            dataSource[filter] = MovieDataSource()
+        }
+        
+        moviesClient.getMovies(movieFilter: filter, pageIndex: dataSource[filter]?.pageIndex ?? 1) { [weak self] result, error in
             
             guard error == nil else {
                 self?.handleErrorFetchingMovies()

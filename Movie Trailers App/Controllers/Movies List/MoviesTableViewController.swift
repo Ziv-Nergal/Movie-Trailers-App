@@ -44,7 +44,8 @@ class MoviesTableViewController: UITableViewController {
     }
     
     @objc func segmentedControlValueChanged(_ sender: UISegmentedControl) {
-        viewModel.fetchMovies(filteredBy: selectedFilter)
+        viewModel.currentFilter = selectedFilter
+        tableView.reloadDataWithAnimation()
     }
     
     private func registerCells() {
@@ -71,6 +72,8 @@ class MoviesTableViewController: UITableViewController {
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
                 
+        guard !viewModel.isLoading else { return }
+        
         if tableView.isReachedEnd(withOffset: 100) {
             
             guard !viewModel.isLoadingNextBatch else { return }
@@ -98,6 +101,6 @@ extension MoviesTableViewController: MoviesViewModelDelegate {
     }
     
     func onMoviesFetchFailed() {
-        //TODO - Handle Error
+        tableView.reloadDataWithAnimation()
     }
 }
