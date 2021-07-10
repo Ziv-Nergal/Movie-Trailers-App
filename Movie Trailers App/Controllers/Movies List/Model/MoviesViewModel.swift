@@ -54,11 +54,22 @@ class MoviesViewModel: BaseViewModel {
     // MARK: - Private Methods
     
     private func handleMoviesResult(_ result: MovieFeedResult?) {
-        dataSource[currentFilter]?.movies.append(contentsOf: result?.results ?? [])
+        
         loadingStateObs.value = .Idle
         isLoadingNextBatchObservable.value = false
-        delegate?.onMoviesFetchedSuccess(isInitialBatch: pageIndex == 1)
-        dataSource[currentFilter]?.pageIndex += 1
+        
+        if let moviesToAdd = result?.results, moviesToAdd.count > 0 {
+            
+            dataSource[currentFilter]?.movies.append(contentsOf: moviesToAdd)
+            delegate?.onMoviesFetchedSuccess(isInitialBatch: pageIndex == 1)
+            
+            //Check if reached end of list
+            if pageIndex < result?.totalPages ?? 0 {
+                dataSource[currentFilter]?.pageIndex += 1
+            } else {
+                dataSource[currentFilter]?.pageIndex = -1
+            }
+        }
     }
     
     private func handleErrorFetchingMovies() {
@@ -70,7 +81,7 @@ class MoviesViewModel: BaseViewModel {
     
     public func fetchMovies(filteredBy filter: MovieFilter) {
 
-        guard !isLoading, !isLoadingNextBatchObservable.value else { return }
+        guard !isLoading, !isLoadingNextBatchObservable.value, pageIndex != -1 else { return }
         
         //Show shimmering loaders only on initial batch
         if pageIndex == 1 {
