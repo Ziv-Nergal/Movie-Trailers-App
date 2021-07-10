@@ -56,14 +56,13 @@ class MoviesViewModel: BaseViewModel {
     private func handleMoviesResult(_ result: MovieFeedResult?) {
         dataSource[currentFilter]?.movies.append(contentsOf: result?.results ?? [])
         loadingStateObs.value = .Idle
+        isLoadingNextBatchObservable.value = false
         delegate?.onMoviesFetchedSuccess(isInitialBatch: pageIndex == 1)
         dataSource[currentFilter]?.pageIndex += 1
-        isLoadingNextBatchObservable.value = false
     }
     
     private func handleErrorFetchingMovies() {
         loadingStateObs.value = .Idle
-        isLoadingNextBatchObservable.value = false
         delegate?.onMoviesFetchFailed()
     }
     

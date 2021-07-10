@@ -10,7 +10,7 @@ import Foundation
 final class MovieVideoClient: API {
     
     func getMovieVideos(movieId id: Int, completion: @escaping (MovieVideosResult?, APIError?) -> ()) {
-        let movieVideoRequest = MovieVideoRequest(id)
-        execute(movieVideoRequest.request, decodingType: MovieVideosResult.self, completion: completion)
+        let endpoint = MovieVideoEndpoint(id)
+        execute(endpoint.request, decodingType: MovieVideosResult.self, completion: completion)
     }
 }

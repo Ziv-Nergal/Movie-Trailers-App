@@ -8,9 +8,7 @@
 import Foundation
 import Alamofire
 
-protocol TMDBEndpoint: Endpoint {
-    var urlComponents: URLComponents { get }
-}
+protocol TMDBEndpoint: Endpoint {}
 
 extension TMDBEndpoint {
     

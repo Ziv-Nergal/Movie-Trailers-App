@@ -30,7 +30,6 @@ class MovieDetailsViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         setupDelegates()
-        
     }
     
     // MARK: - Initiation
@@ -88,6 +87,7 @@ class MovieDetailsViewController: UIViewController {
     
     private func showLoaderOnPlayButton() {
         let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.color = .systemBlue
         let barButton = UIBarButtonItem(customView: activityIndicator)
         navigationItem.rightBarButtonItems = [favoriteButton, barButton]
         activityIndicator.startAnimating()

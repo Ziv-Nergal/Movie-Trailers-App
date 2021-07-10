@@ -8,11 +8,7 @@
 import Foundation
 import Alamofire
 
-protocol MovieVideosEndpoint: TMDBEndpoint {
-    var movieId: Int { get }
-}
-
-struct MovieVideoRequest: MovieVideosEndpoint {
+struct MovieVideoEndpoint: TMDBEndpoint {
     
     let movieId: Int
     

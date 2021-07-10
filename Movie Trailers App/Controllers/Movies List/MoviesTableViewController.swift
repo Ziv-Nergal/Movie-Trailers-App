@@ -192,10 +192,12 @@ extension MoviesTableViewController: MoviesViewModelDelegate {
         
         tableView.reloadDataWithAnimation()
         
-        showAlert(title: "Something went wrong", message: "try again?") { [weak self] in
-            
+        showAlert(
+            title: "Something went wrong, try checking your internet connection",
+            message: "try again?"
+        ) { [weak self] in
             guard let self = self else { return }
-            
+            self.viewModel.isLoadingNextBatchObservable.value = false
             self.viewModel.fetchMovies(filteredBy: self.selectedFilter)
             self.tableView.reloadDataWithAnimation()
         }

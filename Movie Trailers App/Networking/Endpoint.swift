@@ -12,6 +12,7 @@ protocol Endpoint {
     var base: String { get }
     var path: String { get }
     var type: HTTPMethod { get }
+    var urlComponents: URLComponents { get }
 }
 
 extension Endpoint {

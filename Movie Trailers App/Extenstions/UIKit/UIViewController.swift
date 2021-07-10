@@ -15,10 +15,6 @@ extension UIViewController: Storyboarded {
         let components = className.split{$0 == "."}.map ( String.init )
         return components.last!
     }
-        
-    public var embededInEmptyNavController: UINavigationController {
-        UINavigationController(rootViewController: self)
-    }
     
     func showAlert(title: String?, message: String, completion: (()->())? = nil) {
         
@@ -41,6 +37,8 @@ extension UIViewController: Storyboarded {
         self.present(alertController, animated: true)
     }
     
+    // MARK: - Keyboard Handling
+    
     func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
         tap.cancelsTouchesInView = false
@@ -50,6 +48,8 @@ extension UIViewController: Storyboarded {
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
+    
+    // MARK: - Toast Messages
     
     func showToast(message : String) {
         
