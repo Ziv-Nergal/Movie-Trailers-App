@@ -18,19 +18,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
         setupImageCachingExpiration()
-        setupWindow()
         return true
     }
     
     private func setupImageCachingExpiration() {
         //Set image cache expiration limit to 1 day
         SDImageCache.shared.config.maxDiskAge = 60 * 60 * 24
-    }
-    
-    private func setupWindow() {
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = MainTabBarViewController()
-        window?.makeKeyAndVisible()
     }
 }
 
