@@ -4,23 +4,27 @@ PODS:
   - SDWebImage (5.11.1):
     - SDWebImage/Core (= 5.11.1)
   - SDWebImage/Core (5.11.1)
+  - YouTubePlayer (0.7.2)
 
 DEPENDENCIES:
   - Alamofire
   - Hero
   - SDWebImage
+  - YouTubePlayer
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - Hero
     - SDWebImage
+    - YouTubePlayer
 
 SPEC CHECKSUMS:
   Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
   Hero: 215865ba3ae41dd9bb08cd6c60a645529c6fc94b
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
+  YouTubePlayer: 2b5f2830d8f9b2cde942083211291e382c9e6bd5
 
-PODFILE CHECKSUM: bc727694ab377b00da6f7194b21bd44d28007db0
+PODFILE CHECKSUM: 4b41d22f77c563bbe48c1799bb7ea5071b0d67fe
 
 COCOAPODS: 1.8.4

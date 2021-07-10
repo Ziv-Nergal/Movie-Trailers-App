@@ -103,10 +103,14 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c5S-mg-fae" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="733"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="689"/>
                                         <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oab-t0-KXa" customClass="YouTubePlayerView" customModule="YouTubePlayer">
+                                                <rect key="frame" x="0.0" y="15" width="414" height="310.66666666666669"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            </view>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MoviePlaceholderImage" translatesAutoresizingMaskIntoConstraints="NO" id="hPi-73-UEx" userLabel="Movie Poster Image">
-                                                <rect key="frame" x="103.66666666666669" y="59" width="207" height="310.66666666666669"/>
+                                                <rect key="frame" x="103.66666666666669" y="15" width="207" height="310.66666666666669"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="hPi-73-UEx" secondAttribute="height" multiplier="500:750" id="7pc-O1-JRy"/>
                                                 </constraints>
@@ -118,7 +122,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Spiderman" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F8r-un-mea" userLabel="Movie Title">
-                                                <rect key="frame" x="31" y="384.66666666666669" width="352" height="28.666666666666686"/>
+                                                <rect key="frame" x="31" y="340.66666666666669" width="352" height="28.666666666666686"/>
                                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="24"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -127,7 +131,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="eeb-jq-EgA">
-                                                <rect key="frame" x="155.33333333333334" y="418.33333333333331" width="103.33333333333334" height="21.666666666666686"/>
+                                                <rect key="frame" x="155.33333333333334" y="374.33333333333331" width="103.33333333333334" height="21.666666666666686"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="2012" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bwv-ek-nfj" userLabel="Movie Year">
                                                         <rect key="frame" x="0.0" y="0.0" width="41" height="21.666666666666668"/>
@@ -159,27 +163,12 @@
                                                 </constraints>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1dC-vg-8qZ" userLabel="Movie Overview">
-                                                <rect key="frame" x="31" y="455" width="352" height="258"/>
+                                                <rect key="frame" x="31" y="411" width="352" height="258"/>
                                                 <string key="text">Searching for a safer habitat, the prehistoric Crood family discovers an idyllic, walled-in paradise that meets all of its needs. Unfortunately, they must also learn to live with the Bettermans -- a family that's a couple of steps above the Croods on the evolutionary ladder. As tensions between the new neighbors start to rise, a new threat soon propels both clans on an epic adventure that forces them to embrace their differences, draw strength from one another, and survive together.</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="32c-XJ-b56" userLabel="Like Button">
-                                                <rect key="frame" x="15" y="59" width="35" height="35"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="35" id="hED-oq-TRg"/>
-                                                    <constraint firstAttribute="height" constant="35" id="yKk-WV-P9x"/>
-                                                </constraints>
-                                                <color key="tintColor" systemColor="systemYellowColor"/>
-                                                <state key="normal" image="star" catalog="system">
-                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="medium"/>
-                                                </state>
-                                                <state key="selected" image="star.fill" catalog="system"/>
-                                                <connections>
-                                                    <action selector="likeMovieBtnClick:" destination="2ai-vK-Ibc" eventType="touchUpInside" id="04f-M7-d2c"/>
-                                                </connections>
-                                            </button>
                                         </subviews>
                                         <viewLayoutGuide key="safeArea" id="q0z-5H-eQe"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -187,17 +176,19 @@
                                             <constraint firstItem="1dC-vg-8qZ" firstAttribute="width" secondItem="F8r-un-mea" secondAttribute="width" id="20h-cU-FvN"/>
                                             <constraint firstAttribute="bottom" secondItem="1dC-vg-8qZ" secondAttribute="bottom" constant="20" id="2e7-YA-fMU"/>
                                             <constraint firstItem="1dC-vg-8qZ" firstAttribute="centerX" secondItem="c5S-mg-fae" secondAttribute="centerX" id="GIF-Cn-723"/>
+                                            <constraint firstItem="Oab-t0-KXa" firstAttribute="bottom" secondItem="hPi-73-UEx" secondAttribute="bottom" id="GgI-SS-EaG"/>
                                             <constraint firstItem="eeb-jq-EgA" firstAttribute="top" secondItem="F8r-un-mea" secondAttribute="bottom" constant="5" id="Lpj-kt-dlg"/>
                                             <constraint firstItem="F8r-un-mea" firstAttribute="width" secondItem="c5S-mg-fae" secondAttribute="width" multiplier="0.85" id="Rfc-Z3-pcj"/>
                                             <constraint firstItem="hPi-73-UEx" firstAttribute="centerX" secondItem="c5S-mg-fae" secondAttribute="centerX" id="RxW-yn-8Sd"/>
-                                            <constraint firstItem="32c-XJ-b56" firstAttribute="leading" secondItem="q0z-5H-eQe" secondAttribute="leading" constant="15" id="SjK-fI-ae3"/>
+                                            <constraint firstItem="Oab-t0-KXa" firstAttribute="leading" secondItem="q0z-5H-eQe" secondAttribute="leading" id="W9D-zj-6pd"/>
                                             <constraint firstItem="hPi-73-UEx" firstAttribute="top" secondItem="q0z-5H-eQe" secondAttribute="top" constant="15" id="WbM-ES-liT"/>
-                                            <constraint firstItem="32c-XJ-b56" firstAttribute="top" secondItem="hPi-73-UEx" secondAttribute="top" id="YTV-nc-x8Y"/>
                                             <constraint firstItem="1dC-vg-8qZ" firstAttribute="top" secondItem="eeb-jq-EgA" secondAttribute="bottom" constant="15" id="aHS-Up-VAN"/>
                                             <constraint firstItem="eeb-jq-EgA" firstAttribute="centerX" secondItem="c5S-mg-fae" secondAttribute="centerX" id="c98-Zd-WoZ"/>
                                             <constraint firstItem="hPi-73-UEx" firstAttribute="width" secondItem="c5S-mg-fae" secondAttribute="width" multiplier="0.5" id="oW8-1k-8xk"/>
+                                            <constraint firstItem="Oab-t0-KXa" firstAttribute="top" secondItem="hPi-73-UEx" secondAttribute="top" id="r9e-tj-R27"/>
                                             <constraint firstItem="F8r-un-mea" firstAttribute="centerX" secondItem="c5S-mg-fae" secondAttribute="centerX" id="sA3-Qu-FYV"/>
                                             <constraint firstItem="F8r-un-mea" firstAttribute="top" secondItem="hPi-73-UEx" secondAttribute="bottom" constant="15" id="xnc-ew-gj5"/>
+                                            <constraint firstItem="q0z-5H-eQe" firstAttribute="trailing" secondItem="Oab-t0-KXa" secondAttribute="trailing" id="ylZ-Id-ozN"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -221,13 +212,15 @@
                             <constraint firstAttribute="bottom" secondItem="gMk-TR-PwJ" secondAttribute="bottom" id="y24-QM-7YE"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="likeMovieBtn" destination="32c-XJ-b56" id="r6D-Lb-6sL"/>
                         <outlet property="movieOverviewLbl" destination="1dC-vg-8qZ" id="eoa-P9-sJM"/>
                         <outlet property="moviePosterImage" destination="hPi-73-UEx" id="h6f-4B-HgE"/>
                         <outlet property="movieRatingLbl" destination="Pet-Uw-hYh" id="YRU-bZ-aqb"/>
                         <outlet property="movieReleaseYearLbl" destination="Bwv-ek-nfj" id="FL2-gZ-fwt"/>
                         <outlet property="movieTitleLbl" destination="F8r-un-mea" id="MYe-fP-fgS"/>
+                        <outlet property="videoPlayer" destination="Oab-t0-KXa" id="Qhg-gV-tLd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y0o-zD-pof" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -283,7 +276,6 @@
     </scenes>
     <resources>
         <image name="MoviePlaceholderImage" width="100" height="150"/>
-        <image name="star" catalog="system" width="128" height="116"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
         <image name="video.fill" catalog="system" width="128" height="82"/>
         <systemColor name="separatorColor">

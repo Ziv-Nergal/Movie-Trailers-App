@@ -18,6 +18,7 @@ extension Endpoint {
     var request: URLRequest {
         var request = URLRequest(url: URL(string: "\(base)\(path)")!)
         request.httpMethod = type.rawValue
+        request.timeoutInterval = 20
         return request
     }
 }

@@ -12,5 +12,7 @@ target 'Movie Trailers App' do
   pod 'SDWebImage'
   
   pod 'Hero'
+  
+  pod 'YouTubePlayer'
 
 end

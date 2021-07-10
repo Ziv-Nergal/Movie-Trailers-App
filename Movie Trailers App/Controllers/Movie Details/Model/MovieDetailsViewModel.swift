@@ -7,12 +7,39 @@
 
 import UIKit
 
+protocol MovieDetailsViewModelDelegate: AnyObject {
+    func onMovieTrailerFetchedSuccess(key: String)
+    func onMovieVideosFetchFailed()
+}
+
 class MovieDetailsViewModel: BaseViewModel {
     
     private let movie: Movie
+    private let movieVideoClient = MovieVideoClient()
+    
+    weak var delegate: MovieDetailsViewModelDelegate? = .none
     
     init(_ movie: Movie) {
         self.movie = movie
+    }
+    
+    // MARK: - Public Methods
+    
+    public func fetchMovieTrailer() {
+        
+        movieVideoClient.getMovieVideos(movieId: movie.id) { [weak self] result, error in
+            
+            guard error == nil else {
+                self?.delegate?.onMovieVideosFetchFailed()
+                return
+            }
+            
+            if let trailerKey = result?.results.filter({ $0.site == "YouTube" && $0.type == "Trailer" }).first?.key {
+                self?.delegate?.onMovieTrailerFetchedSuccess(key: trailerKey)
+            } else {
+                self?.delegate?.onMovieVideosFetchFailed()
+            }
+        }
     }
     
     // MARK: - Public Fields
