@@ -178,15 +178,13 @@ class MoviesTableViewController: UITableViewController {
 extension MoviesTableViewController: MoviesViewModelDelegate {
     
     func onMoviesFetchedSuccess(isInitialBatch: Bool) {
-        
-        DispatchQueue.main.async { [weak self] in
-            
-            if isInitialBatch {
-                self?.tableView.reloadDataWithAnimation()
-            } else {
-                self?.tableView.reloadData()
-            }
-        }
+		 DispatchQueue.main.asyncAfter(deadline: .now() + (isInitialBatch ? 1.5 : 0)) { [weak self] in
+			 if isInitialBatch {
+				 self?.tableView.reloadDataWithAnimation()
+			 } else {
+				 self?.tableView.reloadData()
+			 }
+		 }
     }
     
     func onMoviesFetchFailed() {
