@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yqG-lt-iU3">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -236,7 +237,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W6l-tY-sdm">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="61"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="0.0"/>
                             <subviews>
                                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="dSm-6I-sEr">
                                     <rect key="frame" x="10" y="15" width="287" height="32"/>
@@ -254,6 +255,11 @@
                                 <constraint firstItem="dSm-6I-sEr" firstAttribute="top" secondItem="W6l-tY-sdm" secondAttribute="top" constant="15" id="9to-L8-M9z"/>
                                 <constraint firstAttribute="trailing" secondItem="dSm-6I-sEr" secondAttribute="trailing" constant="10" id="na4-4D-fd4"/>
                             </constraints>
+                            <variation key="default">
+                                <mask key="subviews">
+                                    <exclude reference="dSm-6I-sEr"/>
+                                </mask>
+                            </variation>
                         </view>
                         <activityIndicatorView key="tableFooterView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" id="gRD-Zc-7Pw" userLabel="Spinner Footer">
                             <rect key="frame" x="0.0" y="61" width="414" height="44"/>

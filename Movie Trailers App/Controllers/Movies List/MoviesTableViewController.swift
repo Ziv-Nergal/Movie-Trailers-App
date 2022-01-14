@@ -29,6 +29,7 @@ class MoviesTableViewController: UITableViewController {
         registerObservers()
         viewModel.fetchMovies(filteredBy: selectedFilter)
         changeTitleAccordingToCurrentFilter()
+        navigationItem.titleView = movieFilterSegmentedControl
     }
     
     // MARK: - Initiation

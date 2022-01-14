@@ -19,11 +19,4 @@ struct MovieVideoEndpoint: TMDBEndpoint {
     var path: String {
         "/3/movie/\(movieId)/videos"
     }
-    
-    var urlComponents: URLComponents {
-        var components = URLComponents(string: base)!
-        components.path = path
-        components.query = "\(apiKey)"
-        return components
-    }
 }

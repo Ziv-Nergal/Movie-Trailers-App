@@ -23,6 +23,13 @@ extension TMDBEndpoint {
     var type: HTTPMethod {
         .get
     }
+        
+    var urlComponents: URLComponents {
+        var components = URLComponents(string: base)!
+        components.path = path
+        components.query = "\(apiKey)"
+        return components
+    }
     
     var request: URLRequest {
         
